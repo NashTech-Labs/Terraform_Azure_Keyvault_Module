@@ -1,7 +1,3 @@
-##################################################
-#                     DATA                       #
-##################################################
-
 data "azurerm_client_config" "current" {}
 
 data "azurerm_subscription" "current" {}
@@ -16,10 +12,6 @@ data "azurerm_subnet" "default-subnet" {
   virtual_network_name = var.vnet_name
   resource_group_name  = var.vnet_rg_name
 }
-
-##################################################
-#                 RESOURCES                      #
-##################################################
 
 resource "azurerm_resource_group" "kv_rg" {
   count    = var.create_rg ? 1 : 0
