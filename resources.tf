@@ -26,17 +26,6 @@ resource "time_sleep" "wait_10_seconds" {
   destroy_duration = "10s"
 }
 
-##### This storage_account is for azurerm_monitor_diagnostic_setting ####
-
-# resource "azurerm_storage_account" "storage_account" {
-#   name                     = "storageaccounttestkv"
-#   resource_group_name      = azurerm_resource_group.kv_rg.name
-#   location                 = azurerm_resource_group.kv_rg.location
-#   account_tier             = "Standard"
-#   account_replication_type = "LRS"
-
-#   depends_on = [time_sleep.wait_10_seconds]
-# }
 
 resource "azurerm_key_vault" "keyvault" {
   name                        = format("%s-kv", lower(var.name))
@@ -97,26 +86,3 @@ resource "azurerm_private_endpoint" "key_vault_private_endpoint" {
   }
   depends_on = [time_sleep.wait_10_seconds]
 }
-
-# resource "azurerm_monitor_diagnostic_setting" "monitor_diagnostic" {
-#   name               = var.monitor_diagnostic_name
-#   target_resource_id = azurerm_key_vault.keyvault.id
-#   storage_account_id = azurerm_storage_account.storage_account.id
-
-#   log {
-#     category = var.log_category
-
-#     retention_policy {
-#       enabled = false
-#     }
-#   }
-
-#   metric {
-#     category = "AllMetrics"
-
-#     retention_policy {
-#       enabled = false
-#     }
-#   }
-# }
-
