@@ -1,7 +1,3 @@
-//====================================================================
-#                          VARIABLES
-//=====================================================================
-
 variable "create_rg" {
   type        = bool
   default     = false
@@ -24,14 +20,14 @@ variable "vnet_name" {
 }
 variable "vnet_rg_name" {
   description = "Name of resource group to deploy vnet in."
-  default     = "kv-rg-test"
+  default     = "rg-test"
 }
 
 # ============================ KEY- VAULT ===============================
 
 variable "name" {
   description = "Name of key vault account."
-  default     = "DCT-test"
+  default     = "test"
 }
 
 variable "location" {
@@ -103,17 +99,5 @@ variable "private_service_connection" {
   default     = "example-keyvault-connection"
 }
 
-# =========================== MONITOR DIAGNOSTIC SETTING =========================
-
-################### only needed while monitor diagnostic setting ##################
-
-# variable "monitor_diagnostic_name" {
-#   description = "Name of monitor_diagnostic_name."
-#   default     = "example"
-# }
-
-# variable "log_category" {
-#   default     = "AuditEvent"
-# }
 
 
